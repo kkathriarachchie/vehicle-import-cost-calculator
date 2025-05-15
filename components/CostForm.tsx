@@ -23,7 +23,7 @@ const CostForm = () => {
         <ExchangeRate />
       </div>
 
-      <>test data</>
+      <>test data </>
     </form>
   );
 };
