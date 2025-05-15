@@ -1,0 +1,11 @@
+import React from "react";
+
+const PanelLayout = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <div className="w-full max-w-3xl overflow-hidden rounded-xl bg-gray-50 shadow-lg">
+      <div className="px-4 py-5 sm:p-6">{children}</div>
+    </div>
+  );
+};
+
+export default PanelLayout;
