@@ -47,5 +47,5 @@ export function calculateLuxuryTax(fuelType: string, cifLKR: number): number {
 
   const excess = cifLKR - threshold;
   // taxPercent is e.g. 120 for 120%, so divide by 100
-  return Math.round(excess * (taxPercent / 100));
+  return excess * (taxPercent / 100);
 }

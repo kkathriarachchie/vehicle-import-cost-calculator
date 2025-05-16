@@ -21,11 +21,11 @@ const VAT = ({
   setVatValue,
 }: VATProps) => {
   const [selectedItems, setSelectedItems] = React.useState({
-    cif: false,
-    cidSur: false,
-    pal: false,
-    exciseDuty: false,
-    luxuryTax: false,
+    cif: true,
+    cidSur: true,
+    pal: true,
+    exciseDuty: true,
+    luxuryTax: true,
   });
 
   useEffect(() => {

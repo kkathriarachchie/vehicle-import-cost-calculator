@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, use } from "react";
 import FuelTypeCom from "./FuelTypeCom";
 import EngineCCCom from "./EngineCCCom";
 import VehiclePrice from "./VehiclePrice";
 import ExchangeRate from "./ExchangeRate";
-import CIFValue from "./CIFValue";
+import CIFPercentage from "./CIFPercentage";
 import DisplayCard from "./DisplayCard";
 import { calculateExciseDuty } from "../lib/excise";
 import { calculateLuxuryTax } from "../lib/luxury";
@@ -17,6 +17,7 @@ const CostForm = () => {
   const [engineCC, setEngineCC] = useState(0);
   const [vehiclePrice, setVehiclePrice] = useState(0);
   const [exchangeRate, setExchangeRate] = useState(0);
+  const [cifPercentage, setCifPercentage] = useState(20);
   const [cifValue, setCifValue] = useState(0);
   const [cifLKRValue, setCifLKRValue] = useState(0);
   const [cidSurValue, setCidSurValue] = useState(0);
@@ -27,30 +28,38 @@ const CostForm = () => {
   const [vatValue, setVatValue] = useState(0);
 
   useEffect(() => {
-    // Calculate CIF value when vehicle price changes
+    // Calculate CIF value when vehicle price or CIF percentage changes
     const calculateCIF = () => {
-      const cif = vehiclePrice * 1.2;
+      const cif = vehiclePrice * (1 + cifPercentage / 100);
       const ciftLKR = exchangeRate * cif;
       const cidSur = ciftLKR * 0.3;
-      const pal = ciftLKR * 0.1; // Adding 20% to vehicle price
+      const pal = ciftLKR * 0.1;
+
       setCifValue(cif);
       setCifLKRValue(ciftLKR);
       setCidSurValue(cidSur);
       setPalValue(pal);
     };
     calculateCIF();
-  }, [vehiclePrice]);
+  }, [
+    vehiclePrice,
+    cifPercentage,
+    exchangeRate,
+    setCifValue,
+    setCifLKRValue,
+    setCidSurValue,
+    setPalValue,
+  ]);
 
-  // Recompute whenever fuelType or engineCC changes:
   useEffect(() => {
     const duty = calculateExciseDuty(fuelType, engineCC);
     setExciseDutyValue(duty);
-  }, [fuelType, engineCC, setExciseDutyValue]);
+  }, [fuelType, engineCC]); // Remove setExciseDutyValue from dependencies
 
   useEffect(() => {
     const tax = calculateLuxuryTax(fuelType, cifLKRValue);
     setLuxuryTaxValue(tax);
-  }, [fuelType, cifLKRValue, setLuxuryTaxValue]);
+  }, [fuelType, cifLKRValue]); // Remove setLuxuryTaxValue from dependencies
 
   return (
     <form className="mx-auto grid max-w-6xl gap-y-5 lg:grid-cols-2 lg:gap-x-8">
@@ -65,7 +74,10 @@ const CostForm = () => {
           exchangeRate={exchangeRate}
           setExchangeRate={setExchangeRate}
         />
-        <CIFValue cifValue={cifValue} setCifValue={setCifValue} />
+        <CIFPercentage
+          cifPercentage={cifPercentage}
+          setCifPercentage={setCifPercentage}
+        />
         <AdminCharge
           adminCharge={adminCharge}
           setAdminCharge={setAdminCharge}
@@ -81,6 +93,7 @@ const CostForm = () => {
       </div>
 
       <DisplayCard
+        cifValue={cifValue}
         cifLKRValue={cifLKRValue}
         cidSur={cidSurValue}
         pal={palValue}
