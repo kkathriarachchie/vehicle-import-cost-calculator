@@ -41,7 +41,7 @@ const DisplayCard = ({
 
   return (
     <div className="w-full">
-      <Card>
+      <Card className="bg-slate-50">
         <CardHeader>
           <CardTitle>Cost Breakdown</CardTitle>
           <CardDescription>Vehicle Import Cost Details</CardDescription>

@@ -20,6 +20,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Spinner } from "./ui/spinner";
 
 const COUNTRY_TO_CURRENCY: { [key: string]: string } = {
   india: "INR",
@@ -72,10 +73,6 @@ export default function ExchangeRate({
     }
   );
 
-  if (isLoading) return <p>Loading rate...</p>;
-  if (error || data?.error)
-    return <p>Error: {error?.message || data?.error}</p>;
-
   return (
     <div>
       <Label htmlFor="exchangeRate">Exchange Rate</Label>
@@ -117,22 +114,48 @@ export default function ExchangeRate({
           </SelectContent>
         </Select>
       </div>
-
-      <Card className="w-full sm:w-[300px] mt-2">
-        <CardHeader>
-          <CardTitle>{selectedCurrency} &rarr; LKR</CardTitle>
-          <CardDescription>Current exchange rate</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <p className="text-2xl font-semibold">
-            {data.rate.toLocaleString("en-US", { maximumFractionDigits: 2 })}{" "}
-            LKR
-          </p>
-        </CardContent>
-        <CardFooter>
-          <small className="text-muted-foreground">Updated every minute</small>
-        </CardFooter>
-      </Card>
+      {isLoading ? (
+        <Card className="w-full sm:w-[300px] mt-2">
+          <CardHeader>
+            <CardTitle>{selectedCurrency} &rarr; LKR</CardTitle>
+            <CardDescription>Current exchange rate</CardDescription>
+          </CardHeader>
+          <CardContent className="flex items-center gap-2">
+            <Spinner size="sm" className="bg-black dark:bg-white" />
+            <p className="font-medium">Loading rate...</p>
+          </CardContent>
+        </Card>
+      ) : error || data?.error ? (
+        <Card className="w-full sm:w-[300px] mt-2">
+          <CardHeader>
+            <CardTitle>{selectedCurrency} &rarr; LKR</CardTitle>
+            <CardDescription className="text-red-500">
+              Error loading rate
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <p className="text-red-500">{error?.message || data?.error}</p>
+          </CardContent>
+        </Card>
+      ) : (
+        <Card className="w-full sm:w-[300px] mt-2">
+          <CardHeader>
+            <CardTitle>{selectedCurrency} &rarr; LKR</CardTitle>
+            <CardDescription>Current exchange rate</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <p className="text-2xl font-semibold">
+              {data.rate.toLocaleString("en-US", { maximumFractionDigits: 2 })}{" "}
+              LKR
+            </p>
+          </CardContent>
+          <CardFooter>
+            <small className="text-muted-foreground">
+              Updated every minute
+            </small>
+          </CardFooter>
+        </Card>
+      )}
     </div>
   );
 }
