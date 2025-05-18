@@ -1,6 +1,7 @@
 import React from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { ProTip } from "./ProTip";
 
 interface AdminChargeProps {
   adminCharge: number;
@@ -15,7 +16,7 @@ const AdminCharge = ({ adminCharge, setAdminCharge }: AdminChargeProps) => {
   return (
     <div className="space-y-2 w-full">
       <Label htmlFor="adminCharge" className="text-sm sm:text-base font-medium">
-        Admin Charge
+        Admin Charge <ProTip text="Admin Charge (Seller Profit, all .etc)" />
       </Label>
       <div className="relative w-full  md:max-w-full">
         <Input

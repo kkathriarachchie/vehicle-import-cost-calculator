@@ -2,6 +2,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "./ui/label";
 import React, { useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
+import { ProTip } from "./ProTip";
 
 interface VATProps {
   cifLKRValue: number;
@@ -63,7 +64,8 @@ const VAT = ({
   return (
     <div className="space-y-2 w-full">
       <Label className="text-sm sm:text-base font-medium">
-        VAT Calculation Components
+        VAT Calculation Components{" "}
+        <ProTip text="Included Relevant for VAT calculation" />
       </Label>
       <Card className="w-full">
         <CardContent className="p-4 sm:p-6">

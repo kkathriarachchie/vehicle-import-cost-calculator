@@ -7,6 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { ProTip } from "./ProTip";
 
 interface DisplayCardProps {
   cifValue: number;
@@ -43,7 +44,7 @@ const DisplayCard = ({
 
   return (
     <div className="w-full">
-      <Card className="bg-slate-50">
+      <Card>
         <CardHeader className="space-y-1 px-4 sm:px-6">
           <CardTitle className="text-xl sm:text-2xl">Cost Breakdown</CardTitle>
           <CardDescription className="text-sm sm:text-base">
@@ -53,8 +54,8 @@ const DisplayCard = ({
         <CardContent className="space-y-4 px-4 sm:px-6">
           <div className="grid gap-3 sm:gap-4">
             <div className="flex justify-between items-center text-sm sm:text-base">
-              <span className="text-muted-foreground">
-                CIF Value {selectedCurrency ? `(${selectedCurrency})` : ""}:
+              <span className="text-muted-foreground align-center">
+                CIF Value {selectedCurrency ? `(${selectedCurrency})` : ""}:{" "}
               </span>
               <span className="font-medium">{formatCurrency(cifValue)}</span>
             </div>
