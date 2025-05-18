@@ -7,7 +7,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { ProTip } from "./ProTip";
 
 interface DisplayCardProps {
   cifValue: number;
@@ -42,6 +41,14 @@ const DisplayCard = ({
     });
   };
 
+  const formatCustomCurrency = (value: number, currency: string) => {
+    return value.toLocaleString("en-US", {
+      style: "currency",
+      currency: currency,
+      minimumFractionDigits: 2,
+    });
+  };
+
   return (
     <div className="w-full">
       <Card>
@@ -57,7 +64,9 @@ const DisplayCard = ({
               <span className="text-muted-foreground align-center">
                 CIF Value {selectedCurrency ? `(${selectedCurrency})` : ""}:{" "}
               </span>
-              <span className="font-medium">{formatCurrency(cifValue)}</span>
+              <span className="font-medium">
+                {formatCustomCurrency(cifValue, selectedCurrency)}
+              </span>
             </div>
             <div className="flex justify-between items-center text-sm sm:text-base">
               <span className="text-muted-foreground">CIF Value (LKR):</span>

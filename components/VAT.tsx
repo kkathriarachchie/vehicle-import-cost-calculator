@@ -52,6 +52,7 @@ const VAT = ({
     palValue,
     exciseDutyValue,
     luxuryTaxValue,
+    setVatValue,
   ]);
 
   const handleCheckboxChange = (id: keyof typeof selectedItems) => {
