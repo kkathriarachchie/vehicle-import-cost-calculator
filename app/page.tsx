@@ -3,13 +3,15 @@ import PanelLayout from "@/components/PanelLayout";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen  flex-col items-center justify-center p-5 lg:p-24">
-      <h1 className="my-14 text-center text-3xl font-bold uppercase tracking-widest text-cyan-800">
+    <main className="min-h-screen px-4 py-6 sm:px-6 md:px-8 lg:px-24">
+      <h1 className="text-2xl sm:text-3xl font-bold text-center text-cyan-800 uppercase tracking-widest mb-6 sm:mb-10 lg:mb-14">
         Vehicle Import Cost Calculator
       </h1>
-      <PanelLayout>
-        <CostForm />
-      </PanelLayout>
+      <div className="max-w-7xl mx-auto">
+        <PanelLayout>
+          <CostForm />
+        </PanelLayout>
+      </div>
     </main>
   );
 }

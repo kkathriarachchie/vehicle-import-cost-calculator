@@ -26,6 +26,7 @@ const CostForm = () => {
   const [luxuryTaxValue, setLuxuryTaxValue] = useState(0);
   const [adminCharge, setAdminCharge] = useState(0);
   const [vatValue, setVatValue] = useState(0);
+  const [selectedCurrency, setSelectedCurrency] = useState<string>("");
 
   useEffect(() => {
     // Calculate CIF value when vehicle price or CIF percentage changes
@@ -62,55 +63,65 @@ const CostForm = () => {
   }, [fuelType, cifLKRValue]); // Remove setLuxuryTaxValue from dependencies
 
   return (
-    <form className="mx-auto grid max-w-6xl gap-y-5 lg:grid-cols-2 lg:gap-x-8">
-      <div className="flex flex-col gap-y-8 py-5 lg:px-5 lg:py-6">
-        <FuelTypeCom fuelType={fuelType} setFuelType={setFuelType} />
-        <EngineCCCom engineCC={engineCC} setEngineCC={setEngineCC} />
-        <VehiclePrice
-          vehiclePrice={vehiclePrice}
-          setVehiclePrice={setVehiclePrice}
-        />
-        <ExchangeRate
-          exchangeRate={exchangeRate}
-          setExchangeRate={setExchangeRate}
-        />
-        <CIFPercentage
-          cifPercentage={cifPercentage}
-          setCifPercentage={setCifPercentage}
-        />
-        <AdminCharge
-          adminCharge={adminCharge}
-          setAdminCharge={setAdminCharge}
-        />
-        <VAT
-          cifLKRValue={cifLKRValue}
-          cidSurValue={cidSurValue}
-          palValue={palValue}
-          exciseDutyValue={exciseDutyValue}
-          luxuryTaxValue={luxuryTaxValue}
-          setVatValue={setVatValue}
-        />
+    <form className="grid gap-6 md:gap-8">
+      <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:gap-8">
+        <div className="space-y-6">
+          <FuelTypeCom fuelType={fuelType} setFuelType={setFuelType} />
+          <EngineCCCom engineCC={engineCC} setEngineCC={setEngineCC} />
+          <ExchangeRate
+            exchangeRate={exchangeRate}
+            setExchangeRate={setExchangeRate}
+            setSelectedCurrency={setSelectedCurrency}
+          />
+        </div>
+        <div className="space-y-6">
+          <VehiclePrice
+            vehiclePrice={vehiclePrice}
+            setVehiclePrice={setVehiclePrice}
+            selectedCurrency={selectedCurrency}
+          />
+          <CIFPercentage
+            cifPercentage={cifPercentage}
+            setCifPercentage={setCifPercentage}
+          />
+          <AdminCharge
+            adminCharge={adminCharge}
+            setAdminCharge={setAdminCharge}
+          />
+
+          <VAT
+            cifLKRValue={cifLKRValue}
+            cidSurValue={cidSurValue}
+            palValue={palValue}
+            exciseDutyValue={exciseDutyValue}
+            luxuryTaxValue={luxuryTaxValue}
+            setVatValue={setVatValue}
+          />
+        </div>
       </div>
 
-      <DisplayCard
-        cifValue={cifValue}
-        cifLKRValue={cifLKRValue}
-        cidSur={cidSurValue}
-        pal={palValue}
-        exDuty={exciseDutyValue}
-        luxuryTax={luxuryTaxValue}
-        vat={vatValue}
-        adminCharge={adminCharge}
-        totalCost={
-          cifLKRValue +
-          cidSurValue +
-          palValue +
-          exciseDutyValue +
-          luxuryTaxValue +
-          vatValue +
-          adminCharge
-        }
-      />
+      <div className="mt-6">
+        <DisplayCard
+          cifValue={cifValue}
+          cifLKRValue={cifLKRValue}
+          cidSur={cidSurValue}
+          pal={palValue}
+          exDuty={exciseDutyValue}
+          luxuryTax={luxuryTaxValue}
+          vat={vatValue}
+          adminCharge={adminCharge}
+          totalCost={
+            cifLKRValue +
+            cidSurValue +
+            palValue +
+            exciseDutyValue +
+            luxuryTaxValue +
+            vatValue +
+            adminCharge
+          }
+          selectedCurrency={selectedCurrency}
+        />
+      </div>
     </form>
   );
 };

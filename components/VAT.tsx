@@ -61,50 +61,67 @@ const VAT = ({
   };
 
   return (
-    <div>
-      <Label>VAT Calculation Components</Label>
-      <Card className="mt-2">
-        <CardContent>
-          <div className="grid grid-cols-2 gap-4 mt-2">
+    <div className="space-y-2 w-full">
+      <Label className="text-sm sm:text-base font-medium">
+        VAT Calculation Components
+      </Label>
+      <Card className="w-full">
+        <CardContent className="p-4 sm:p-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             <div className="flex items-center space-x-2">
               <Checkbox
                 id="cif"
                 checked={selectedItems.cif}
                 onCheckedChange={() => handleCheckboxChange("cif")}
+                className="h-4 w-4 sm:h-5 sm:w-5"
               />
-              <Label htmlFor="cif">CIF Value</Label>
+              <Label htmlFor="cif" className="text-sm sm:text-base">
+                CIF Value
+              </Label>
             </div>
             <div className="flex items-center space-x-2">
               <Checkbox
                 id="cidSur"
                 checked={selectedItems.cidSur}
                 onCheckedChange={() => handleCheckboxChange("cidSur")}
+                className="h-4 w-4 sm:h-5 sm:w-5"
               />
-              <Label htmlFor="cidSur">CID/SUR</Label>
+              <Label htmlFor="cidSur" className="text-sm sm:text-base">
+                CID/SUR
+              </Label>
             </div>
             <div className="flex items-center space-x-2">
               <Checkbox
                 id="pal"
                 checked={selectedItems.pal}
                 onCheckedChange={() => handleCheckboxChange("pal")}
+                className="h-4 w-4 sm:h-5 sm:w-5"
               />
-              <Label htmlFor="pal">PAL</Label>
+              <Label htmlFor="pal" className="text-sm sm:text-base">
+                PAL
+              </Label>
             </div>
             <div className="flex items-center space-x-2">
               <Checkbox
                 id="exciseDuty"
                 checked={selectedItems.exciseDuty}
                 onCheckedChange={() => handleCheckboxChange("exciseDuty")}
+                className="h-4 w-4 sm:h-5 sm:w-5"
               />
-              <Label htmlFor="exciseDuty">Excise Duty</Label>
+              <Label htmlFor="exciseDuty" className="text-sm sm:text-base">
+                Excise Duty
+              </Label>
             </div>
             <div className="flex items-center space-x-2">
               <Checkbox
                 id="luxuryTax"
                 checked={selectedItems.luxuryTax}
                 onCheckedChange={() => handleCheckboxChange("luxuryTax")}
+                className="h-4 w-4 sm:h-5 sm:w-5"
               />
-              <Label htmlFor="luxuryTax">Luxury Tax</Label>
+              <Label htmlFor="luxuryTax" className="text-sm sm:text-base">
+                Luxury Tax
+              </Label>
             </div>
           </div>
         </CardContent>
