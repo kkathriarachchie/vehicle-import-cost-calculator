@@ -1,63 +1,53 @@
 # Vehicle Import Cost Calculator
 
-A web application built with Next.js that helps calculate vehicle import costs and related charges.
+A comprehensive web application for calculating vehicle import costs and taxes in Sri Lanka, built with Next.js and TypeScript. This calculator provides accurate estimates for various charges including import duties, luxury tax, VAT, and other applicable taxes.
+
+🔗 **Live Demo:** [Vehicle Tax Calculator](https://kkathriarachchie.github.io/vehicle-import-cost-calculator/)
 
 ## Features
 
-- Calculate vehicle import duties and taxes
-- Support for different vehicle types
-- Engine capacity based calculations
-- CIF percentage calculations
-- Administrative charges computation
-- Modern responsive UI with Tailwind CSS
+- **Real-time Calculations**
+
+  - Import duties based on vehicle type and engine capacity
+  - Luxury tax computation
+  - VAT calculations with configurable components
+  - CIF value calculations with adjustable percentages
+  - Administrative charges
+
+- **Vehicle Support**
+
+  - Petrol vehicles
+  - Diesel vehicles
+  - Petrol Hybrid vehicles
+  - Diesel Hybrid vehicles
+
+- **Exchange Rate Integration**
+
+  - Live currency exchange rates
+  - Support for multiple countries
+  - Manual rate override option
+
+- **User-Friendly Interface**
+  - Responsive design for all devices
+  - Dark/Light theme support
+  - Clear cost breakdown display
+  - Input validation and error handling
 
 ## Tech Stack
 
-- [Next.js](https://nextjs.org/)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [Radix UI](https://www.radix-ui.com/) for accessible components
+- **Framework:** [Next.js 15.3.2](https://nextjs.org/)
+- **Language:** [TypeScript](https://www.typescriptlang.org/)
+- **Styling:**
+  - [Tailwind CSS](https://tailwindcss.com/)
+  - [Radix UI](https://www.radix-ui.com/) for accessible components
+- **State Management:** React Hooks
+- **Data Fetching:** SWR for exchange rates
+- **Deployment:** GitHub Pages
 
 ## Getting Started
 
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/vehicle-import-cost-calculator.git
+git clone https://github.com/kkathriarachchie/vehicle-import-cost-calculator.git
 ```
-
-2. Install dependencies:
-
-```bash
-npm install
-```
-
-3. Run the development server:
-
-```bash
-npm run dev
-```
-
-4. Open [http://localhost:3000](http://localhost:3000) in your browser
-
-## Project Structure
-
-```
-├── app/                   # Next.js app directory
-├── components/            # React components
-├── lib/                   # Utility functions and helpers
-├── public/               # Static assets
-└── styles/               # Global styles
-```
-
-## Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details
