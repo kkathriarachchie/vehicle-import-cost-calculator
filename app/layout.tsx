@@ -1,9 +1,47 @@
-import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { Metadata, Viewport } from "next";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  themeColor: "#000000",
+};
+
+export const metadata: Metadata = {
+  title: "Vehicle Import Cost Calculator",
+  description: "Calculate vehicle import costs and taxes for Sri Lanka",
+  manifest: "/manifest.json",
+  icons: {
+    icon: [
+      {
+        url: "/icons/manifest-icon-192.maskable.png",
+        sizes: "192x192",
+        type: "image/png",
+      },
+      {
+        url: "/icons/manifest-icon-512.maskable.png",
+        sizes: "512x512",
+        type: "image/png",
+      },
+    ],
+    shortcut: ["/icons/manifest-icon-192.maskable.png"],
+    apple: [
+      { url: "/icons/manifest-icon-192.maskable.png" },
+      { url: "/icons/manifest-icon-512.maskable.png", sizes: "512x512" },
+    ],
+  },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "Vehicle Tax",
+  },
+};
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -11,10 +49,14 @@ const poppins = Poppins({
   weight: ["400", "500", "600", "700"],
 });
 
-export const metadata: Metadata = {
+{
+  /* @ts-expect-error Server Component 
+  export const metadata: Metadata = {
   title: "Vehicle Import Cost Calculator",
   description: "Calculate the cost of importing a vehicle",
 };
+  */
+}
 
 export default function RootLayout({
   children,
@@ -23,9 +65,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      </head>
       <body
         className={`${poppins.variable} antialiased min-h-screen flex flex-col`}
       >

@@ -41,14 +41,6 @@ const DisplayCard = ({
     });
   };
 
-  const formatCustomCurrency = (value: number, currency: string) => {
-    return value.toLocaleString("en-US", {
-      style: "currency",
-      currency: currency,
-      minimumFractionDigits: 2,
-    });
-  };
-
   return (
     <div className="w-full">
       <Card>
@@ -60,16 +52,14 @@ const DisplayCard = ({
         </CardHeader>
         <CardContent className="space-y-4 px-4 sm:px-6">
           <div className="grid gap-3 sm:gap-4">
-            <div className="flex justify-between items-center text-sm sm:text-base">
+            {/*<div className="flex justify-between items-center text-sm sm:text-base">
               <span className="text-muted-foreground align-center">
                 CIF Value {selectedCurrency ? `(${selectedCurrency})` : ""}:{" "}
               </span>
-              <span className="font-medium">
-                {formatCustomCurrency(cifValue, selectedCurrency)}
-              </span>
-            </div>
+              <span className="font-medium">{formatCurrency(cifValue)}</span>
+            </div>*/}
             <div className="flex justify-between items-center text-sm sm:text-base">
-              <span className="text-muted-foreground">CIF Value (LKR):</span>
+              <span className="text-muted-foreground">CIF Value:</span>
               <span className="font-medium">{formatCurrency(cifLKRValue)}</span>
             </div>
             <div className="flex justify-between items-center text-sm sm:text-base">
