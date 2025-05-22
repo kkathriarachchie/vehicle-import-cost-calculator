@@ -6,7 +6,8 @@ const nextConfig = withPWA({
   skipWaiting: true,
   disable: process.env.NODE_ENV === "development",
 })({
-  // Your other Next.js config options here
+  // Youer other Next.js config options here
+  output: "export",
 });
 
 export default nextConfig;
