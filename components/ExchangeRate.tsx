@@ -101,7 +101,7 @@ export default function ExchangeRate({
       };
     },
     {
-      refreshInterval: 60000,
+      refreshInterval: 30 * 24 * 60 * 60 * 1000,
       onSuccess: (data) => {
         if (data && !data.error) {
           setExchangeRate(data.rate);
