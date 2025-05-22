@@ -8,6 +8,11 @@ const nextConfig = withPWA({
 })({
   // Youer other Next.js config options here
   output: "export",
+  images: {
+    unoptimized: true,
+  },
+  // Add basePath for GitHub Pages
+  basePath: "/vehicle-import-cost-calculator",
 });
 
 export default nextConfig;

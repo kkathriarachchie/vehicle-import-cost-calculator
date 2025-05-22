@@ -71,11 +71,37 @@ export default function ExchangeRate({
     setSelectedCurrency(selectedCurrency);
   }, [selectedCurrency, setSelectedCurrency]);
 
-  const { data, error, isLoading, mutate } = useSWR<RateResponse>(
+  {
+    /*const { data, error, isLoading, mutate } = useSWR<RateResponse>(
     !isManual ? `/api/exchange-rate?from=${selectedCurrency}` : null,
     fetcher,
     {
       refreshInterval: 60000, // Update every minute
+      onSuccess: (data) => {
+        if (data && !data.error) {
+          setExchangeRate(data.rate);
+        }
+      },
+    }
+  );*/
+  }
+
+  const { data, error, isLoading, mutate } = useSWR<RateResponse>(
+    !isManual && process.env.NEXT_PUBLIC_EXCHANGERATE_API_KEY
+      ? `https://v6.exchangerate-api.com/v6/${process.env.NEXT_PUBLIC_EXCHANGERATE_API_KEY}/pair/${selectedCurrency}/LKR`
+      : null,
+    async (url) => {
+      const res = await fetch(url);
+      if (!res.ok) throw new Error("Failed to fetch rate");
+      const data = await res.json();
+      return {
+        base: selectedCurrency,
+        target: "LKR",
+        rate: data.conversion_rate,
+      };
+    },
+    {
+      refreshInterval: 60000,
       onSuccess: (data) => {
         if (data && !data.error) {
           setExchangeRate(data.rate);
