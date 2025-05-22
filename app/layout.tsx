@@ -14,7 +14,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Vehicle Import Cost Calculator",
+  title: "Vehicle Tax Calculator 2025",
   description: "Calculate vehicle import costs and taxes for Sri Lanka",
   manifest: "/manifest.json",
   icons: {
@@ -28,6 +28,15 @@ export const metadata: Metadata = {
         url: "/icons/manifest-icon-512.maskable.png",
         sizes: "512x512",
         type: "image/png",
+      },
+      {
+        url: "/vehicle-import-cost-calculator/favicon.ico",
+        sizes: "any",
+      },
+      {
+        url: "/vehicle-import-cost-calculator/icon.png",
+        type: "image/png",
+        sizes: "192x192",
       },
     ],
     shortcut: ["/icons/manifest-icon-192.maskable.png"],

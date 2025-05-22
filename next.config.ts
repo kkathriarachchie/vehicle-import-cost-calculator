@@ -13,6 +13,7 @@ const nextConfig = withPWA({
   },
   // Add basePath for GitHub Pages
   basePath: "/vehicle-import-cost-calculator",
+  assetPrefix: "/vehicle-import-cost-calculator/",
 });
 
 export default nextConfig;
