@@ -59,10 +59,10 @@ git clone https://github.com/kkathriarachchie/vehicle-import-cost-calculator.git
     <td><span>Light Mode  </span><br/><img src="/public/Screenshots/Light Mood.png" alt="Screenshot 1" width="300"/></td>
   </tr>
   <tr>
-    <td><td><span>Dark Mode  </span><br/><img src="/public/Screenshots/Dark Mood.png" alt="Screenshot 3" width="300"/></td>
-   
+    <td><span>Dark Mode  </span><br/><img src="/public/Screenshots/Dark Mood.png" alt="Screenshot 3" width="300"/></td>
+  
   </tr>
   <tr>
-    <td><td><span>About Page  </span><br/><img src="/public/Screenshots/About Page.png" alt="Screenshot 5" width="300"/></td>
+    <td><span>About Page  </span><br/><img src="/public/Screenshots/About Page.png" alt="Screenshot 5" width="300"/></td>
   </tr>
 </table>
