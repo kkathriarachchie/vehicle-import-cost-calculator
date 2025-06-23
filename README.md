@@ -52,7 +52,7 @@ A comprehensive web application for calculating vehicle import costs and taxes i
 git clone https://github.com/kkathriarachchie/vehicle-import-cost-calculator.git
 ```
 
-## 🖼️ **Project Screenshots**
+## **Project Screenshots**
 
 ### Light Mode
 
